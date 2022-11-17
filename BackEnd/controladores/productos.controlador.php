@@ -19,11 +19,11 @@ class ControladorProductos {
       MOSTRAR INFO PRODUCTO
       ============================================= */
 
-        static public function ctrMostrarInfoArts($item, $valor) {
+        static public function ctrMostrarProductosId($item, $valor) {
 
         $tabla = "productos";
 
-        $respuesta = ModeloProductos::mdlMostrarInfoNoticias($tabla, $item, $valor);
+        $respuesta = ModeloProductos::mdlMostrarProductosId($tabla, $item, $valor);
 
         return $respuesta;
     }

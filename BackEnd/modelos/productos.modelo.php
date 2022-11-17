@@ -51,9 +51,9 @@ class ModeloProductos {
       MOSTRAR INFO PRODUCTO
       ============================================= */
 
-    static public function mdlMostrarInfoNoticias($tabla, $item, $valor) {
+    static public function mdlMostrarProductosId($tabla, $item, $valor) {
 
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+        $stmt = conecta::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 
         $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
