@@ -65,8 +65,9 @@
 		<div id="banner"><a><img src = "BackEnd/banners/archivos/<?php echo "$ban" ?>" width="900px" heigth="300px"></a></div>
 		
 		<table id="productos">
-			<?php for($i=0;$i<6;$i++){ 
-                                $prod = ControladorProductos::ctrMostrarProductos();
+			<?php for($i=0;$i<8;$i++){ 
+                                $limite = 1;
+                                $prod = ControladorProductos::ctrMostrarProductos($limite);
 				
 				$id = $prod["id"];
 				$nombre = $prod["nombre"];
@@ -88,7 +89,7 @@
 				$dat = 0;
 				$dat = $i + 1;
 				
-				if($dat == 3 || $dat == 6 ){
+				if($dat == 4 || $dat == 8 ){
 					echo "<tr class=\"barra\"></tr><br>";
 				}
 			

@@ -7,18 +7,44 @@ class ModeloProductos {
       MOSTRAR PRODUCTOS
       ============================================= */
 
-    static public function mdlMostrarProductos($tabla) {
+    static public function mdlMostrarProductos($tabla, $limite) {
+        switch ($limite) {
+            case 1:
+                $stmt = conecta::conectar()->prepare("SELECT * FROM $tabla WHERE eliminado = 0 AND stock != 0 ORDER BY rand() LIMIT $limite");
 
+                $stmt->execute();
 
-        $stmt =  conecta::conectar()->prepare("SELECT * FROM $tabla WHERE eliminado = 0 AND stock != 0 ORDER BY rand() LIMIT 1");
+                return $stmt->fetch();
 
-        $stmt->execute();
+                $stmt->close();
 
-        return $stmt->fetch();
+                $stmt = null;
+                ;
+            case "":
+                $stmt = conecta::conectar()->prepare("SELECT * FROM $tabla WHERE eliminado = 0 AND stock != 0");
 
-        $stmt->close();
+                $stmt->execute();
 
-        $stmt = null;
+                return $stmt->fetchAll();
+
+                $stmt->close();
+
+                $stmt = null;
+                ;
+            default:
+                $stmt = conecta::conectar()->prepare("SELECT * FROM $tabla WHERE eliminado = 0 AND stock != 0 LIMIT $limite");
+
+                $stmt->execute();
+
+                return $stmt->fetchAll();
+
+                $stmt->close();
+
+                $stmt = null;
+        }
+        if ($limite != "") {
+            
+        }
     }
 
     /* =============================================
